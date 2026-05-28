@@ -17,17 +17,20 @@ export function formatCurrency(value) {
 
 export function buildWhatsAppMessage(formData) {
   const lines = [
-    '📋 *Nova Simulação — Realiza Empréstimos*',
+    'Olá, gostaria de solicitar uma simulação de crédito com garantia de veículo.',
     '',
-    `👤 *Nome:* ${formData.name}`,
-    `📱 *WhatsApp:* ${formData.whatsapp}`,
-    `💰 *Valor desejado:* ${formData.amount}`,
-    `🚗 *Veículo:* ${formData.vehicle}`,
-    `📅 *Ano:* ${formData.vehicleYear}`,
-    `💼 *Vínculo:* ${formData.employmentTypeLabel || formData.employmentType}`,
-    `🧑‍💼 *Profissão/Ocupação:* ${formData.occupation}`,
+    '*Dados do cliente:*',
+    `Nome: ${formData.name}`,
+    `Telefone: ${formData.whatsapp}`,
     '',
-    '_Mensagem enviada pelo site realizaemprestimos.com.br_',
+    '*Dados da solicitação:*',
+    `Valor desejado: ${formData.amount}`,
+    `Veículo: ${formData.vehicle}`,
+    `Ano: ${formData.vehicleYear}`,
+    `Vínculo empregatício: ${formData.employmentTypeLabel || formData.employmentType}`,
+    `Profissão: ${formData.occupation}`,
+    '',
+    'Fico no aguardo do retorno para dar continuidade ao atendimento.',
   ]
   return encodeURIComponent(lines.join('\n'))
 }

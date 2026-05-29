@@ -65,7 +65,8 @@ export const EMPLOYMENT_TYPES = [
 
 export const VEHICLE_YEARS = (() => {
   const currentYear = new Date().getFullYear()
-  return Array.from({ length: 20 }, (_, i) => {
+  const startYear = 2001
+  return Array.from({ length: currentYear - startYear + 1 }, (_, i) => {
     const year = currentYear - i
     return { value: String(year), label: String(year) }
   })

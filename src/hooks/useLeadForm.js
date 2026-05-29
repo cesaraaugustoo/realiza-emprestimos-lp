@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
 import { validateLeadForm, isFormValid } from '@/utils/validators'
 import { sanitizeString, sanitizePhone } from '@/utils/sanitizers'
-import { formatPhone, buildWhatsAppMessage } from '@/utils/formatters'
+import { formatPhone, formatAmountInput, buildWhatsAppMessage } from '@/utils/formatters'
 import { tracking } from '@/utils/tracking'
 import { WHATSAPP, EMPLOYMENT_TYPES } from '@/config/constants'
 
@@ -44,6 +44,8 @@ export function useLeadForm() {
     let sanitized = value
     if (name === 'whatsapp') {
       sanitized = formatPhone(sanitizePhone(value))
+    } else if (name === 'amount') {
+      sanitized = formatAmountInput(value)
     } else if (name === 'name' || name === 'vehicle' || name === 'occupation') {
       sanitized = sanitizeString(value)
     }

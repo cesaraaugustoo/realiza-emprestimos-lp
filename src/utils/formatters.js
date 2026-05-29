@@ -15,7 +15,17 @@ export function formatCurrency(value) {
   }).format(number)
 }
 
+export function formatAmountInput(rawValue) {
+  const digits = rawValue.replace(/\D/g, '')
+  if (!digits) return ''
+  return Number(digits).toLocaleString('pt-BR')
+}
+
 export function buildWhatsAppMessage(formData) {
+  const amountDisplay = formData.amount
+    ? `R$ ${formData.amount}`
+    : 'Não informado'
+
   const lines = [
     'Olá, gostaria de solicitar uma simulação de crédito com garantia de veículo.',
     '',
@@ -24,7 +34,7 @@ export function buildWhatsAppMessage(formData) {
     `Telefone: ${formData.whatsapp}`,
     '',
     '*Dados da solicitação:*',
-    `Valor desejado: ${formData.amount}`,
+    `Valor desejado: ${amountDisplay}`,
     `Veículo: ${formData.vehicle}`,
     `Ano: ${formData.vehicleYear}`,
     `Vínculo empregatício: ${formData.employmentTypeLabel || formData.employmentType}`,

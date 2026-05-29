@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Badge } from '@/components/ui/Badge'
-import { LOAN_AMOUNTS, VEHICLE_YEARS, EMPLOYMENT_TYPES, WHATSAPP } from '@/config/constants'
+import { VEHICLE_YEARS, EMPLOYMENT_TYPES, WHATSAPP } from '@/config/constants'
 import { tracking } from '@/utils/tracking'
 
 const TRUST_ITEMS = [
@@ -148,15 +148,17 @@ export function HeroSection() {
                       autoComplete="tel"
                     />
 
-                    <Select
+                    <Input
                       label="Valor desejado"
                       name="amount"
+                      type="text"
+                      inputMode="numeric"
                       value={fields.amount}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={touched.amount ? errors.amount : null}
-                      options={LOAN_AMOUNTS}
-                      placeholder="Quanto você precisa?"
+                      placeholder="0"
+                      prefix="R$"
                       required
                     />
 

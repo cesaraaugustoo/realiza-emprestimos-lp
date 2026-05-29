@@ -12,6 +12,7 @@ export function Input({
   required = false,
   inputMode,
   autoComplete,
+  prefix,
   className = '',
 }) {
   const inputId = `field-${name}`
@@ -28,31 +29,42 @@ export function Input({
           {required && <span className="text-brand-red ml-0.5">*</span>}
         </label>
       )}
-      <input
-        id={inputId}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        required={required}
-        inputMode={inputMode}
-        autoComplete={autoComplete}
-        aria-invalid={!!error}
-        aria-describedby={error ? errorId : undefined}
-        className={[
-          'w-full px-4 py-3 rounded-lg border text-brand-black bg-white',
-          'text-base placeholder:text-brand-gray-mid',
-          'transition-colors duration-150',
-          'focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-brand-red',
-          error
-            ? 'border-red-500 bg-red-50'
-            : 'border-brand-gray-border hover:border-brand-gray-mid',
-        ]
-          .filter(Boolean)
-          .join(' ')}
-      />
+      <div className="relative">
+        {prefix && (
+          <span
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray-dark font-semibold pointer-events-none select-none text-base"
+            aria-hidden="true"
+          >
+            {prefix}
+          </span>
+        )}
+        <input
+          id={inputId}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          required={required}
+          inputMode={inputMode}
+          autoComplete={autoComplete}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
+          className={[
+            'w-full py-3 rounded-lg border text-brand-black bg-white',
+            'text-base placeholder:text-brand-gray-mid',
+            'transition-colors duration-150',
+            'focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-brand-red',
+            prefix ? 'pl-12 pr-4' : 'px-4',
+            error
+              ? 'border-red-500 bg-red-50'
+              : 'border-brand-gray-border hover:border-brand-gray-mid',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        />
+      </div>
       {error && (
         <p id={errorId} role="alert" className="text-xs text-red-500 mt-0.5">
           {error}
@@ -74,5 +86,6 @@ Input.propTypes = {
   required: PropTypes.bool,
   inputMode: PropTypes.string,
   autoComplete: PropTypes.string,
+  prefix: PropTypes.string,
   className: PropTypes.string,
 }

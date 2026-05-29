@@ -9,7 +9,8 @@ export const FIELD_ERRORS = {
     invalid: 'Número de WhatsApp inválido. Use o formato (99) 99999-9999.',
   },
   amount: {
-    required: 'Selecione o valor desejado.',
+    required: 'Informe o valor desejado.',
+    invalid: 'Informe um valor maior que zero.',
   },
   vehicle: {
     required: 'Informe o modelo do veículo.',
@@ -35,7 +36,9 @@ export function validateWhatsApp(value) {
 }
 
 export function validateAmount(value) {
-  if (!value) return FIELD_ERRORS.amount.required
+  if (!value || value.trim().length === 0) return FIELD_ERRORS.amount.required
+  const digits = value.replace(/\D/g, '')
+  if (!digits || Number(digits) === 0) return FIELD_ERRORS.amount.invalid
   return null
 }
 

@@ -50,7 +50,7 @@ export function Header() {
             aria-label="Realiza Empréstimos — Ir para o início"
           >
             <img
-              src="/LOGO.jpeg"
+              src="/LOGO_.jpeg"
               alt="Realiza Empréstimos"
               className="h-[96px] w-auto object-contain"
             />

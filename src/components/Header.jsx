@@ -4,6 +4,7 @@ import { WHATSAPP } from '@/config/constants'
 import { tracking } from '@/utils/tracking'
 
 const NAV_LINKS = [
+  { label: 'Quem Somos', href: '#quem-somos' },
   { label: 'Benefícios', href: '#beneficios' },
   { label: 'Como Funciona', href: '#como-funciona' },
   { label: 'Depoimentos', href: '#depoimentos' },
@@ -27,6 +28,12 @@ export function Header() {
 
   const handleNavClick = (href) => {
     setMenuOpen(false)
+    if (href === '#quem-somos') {
+      const el = document.querySelector('#depoimentos')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+      window.dispatchEvent(new CustomEvent('activate-tab', { detail: 'quem-somos' }))
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }

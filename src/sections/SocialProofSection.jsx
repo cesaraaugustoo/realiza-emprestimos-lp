@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { Badge } from '@/components/ui/Badge'
 import { SOCIAL_PROOF } from '@/config/constants'
@@ -268,6 +268,12 @@ const TABS = [
 
 export function SocialProofSection() {
   const [activeTab, setActiveTab] = useState('depoimentos')
+
+  useEffect(() => {
+    const handler = (e) => setActiveTab(e.detail)
+    window.addEventListener('activate-tab', handler)
+    return () => window.removeEventListener('activate-tab', handler)
+  }, [])
 
   return (
     <section

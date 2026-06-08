@@ -54,6 +54,18 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Security Notice */}
+      <div className="bg-yellow-500/10 border-b border-yellow-500/20">
+        <div className="container-xl py-4">
+          <p className="text-sm text-white/70 text-center">
+            ⚠️{' '}
+            <strong className="text-yellow-400">A REALIZA preza pela segurança e privacidade dos seus parceiros.</strong>{' '}
+            Nunca solicitaremos o envio de senhas, dados completos de cartão de crédito ou qualquer tipo de pagamento antecipado para prestação de serviços.
+            Caso receba qualquer solicitação desse tipo, desconsidere e entre em contato com nossos canais oficiais.
+          </p>
+        </div>
+      </div>
+
       <div className="container-xl py-14">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
